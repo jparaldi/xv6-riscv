@@ -43,3 +43,5 @@ entry("sbrk");
 entry("pause");
 entry("uptime");
 entry("sync");
+
+entry("getcnt"); # Nova syscall adicionada por João Araldi para contar syscalls
