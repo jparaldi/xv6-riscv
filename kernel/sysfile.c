@@ -528,3 +528,24 @@ sys_pipe(void)
   }
   return 0;
 }
+
+// Bloco adicionado por João Araldi para contar syscalls
+extern int syscall_counts[];
+
+uint64
+sys_getcnt(void)
+{
+  int sys_num;
+  
+  // Extrai argumento 0 (o numero da syscall)
+  if (argint(0, &sys_num) < 0)
+    return -1;
+    
+  // Verifica limites (agora ate 23)
+  if(sys_num <= 0 || sys_num > 23)
+    return -1;
+    
+  return syscall_counts[sys_num];
+}
+
+// Fim do bloco adicionado por João Araldi para contar syscalls
